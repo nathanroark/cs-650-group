@@ -1,0 +1,46 @@
+@startuml
+!theme vibrant
+
+title Create Account - Class Diagram
+
+class Customer {
+  - name: String
+  - address: String
+  - phoneNumber: String
+  - email: String
+  - ssn: String
+  - username: String
+  - password: String
+  + createAccount()
+  + verifyEmail()
+}
+
+class CustomerService {
+  + createCustomerProfile(customer: Customer): Boolean
+  + validateCustomerInfo(customer: Customer): Boolean
+  + sendConfirmationEmail(customer: Customer): void
+}
+
+class RegistrationForm {
+  - name: String
+  - address: String
+  - phoneNumber: String
+  - email: String
+  - ssn: String
+  + submitForm()
+}
+
+class Account {
+  - accountNumber: String
+  - accountType: String
+  - balance: Double
+  + deposit(amount: Double)
+  + withdraw(amount: Double)
+}
+
+Customer "1" -- "1" RegistrationForm : "fills"
+Customer "1" -- "*" Account : "owns"
+CustomerService ..> Customer : "manages"
+CustomerService ..> RegistrationForm : "validates"
+
+@enduml

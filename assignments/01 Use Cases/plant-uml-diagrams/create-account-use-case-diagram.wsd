@@ -1,0 +1,24 @@
+@startuml
+!theme vibrant
+actor Customer
+
+rectangle "Bank Management System" {
+  usecase "Create Account" as UC1
+  usecase "Fill Registration Form" as UC2
+  usecase "Validate Information" as UC3
+  usecase "Agree to Terms and Conditions" as UC4
+  usecase "Email Verification" as UC5
+  usecase "Create Customer Profile" as UC6
+}
+
+Customer -> UC1 : Initiates Account Creation
+UC1 -> UC2 : Displays Registration Form
+Customer -> UC2 : Fills Registration Form
+UC2 -> UC3 : Validates Information
+Customer -> UC4 : Reviews and Accepts Terms
+UC4 -> UC3 : Proceed to Validation
+UC3 -> UC6 : Create Customer Profile
+UC6 -> UC5 : Sends Confirmation Email
+Customer -> UC5 : Verifies Email
+
+@enduml
